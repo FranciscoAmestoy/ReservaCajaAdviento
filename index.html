@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caja de Adviento Emprendedora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="contenedor-principal">
+    <section class="tarjeta">
+      <header class="cabecera">
+        <img src="logo.png" alt="Inucorn" class="logo">
+        <h1 class="titulo">Caja de Adviento Emprendedora</h1>
+      </header>
+
+      <!-- Paso 1 -->
+      <div id="paso-1" class="paso activo">
+        <div class="campo">
+          <label for="input-nombre">Ingresá tu nombre:</label>
+          <input type="text" id="input-nombre" autocomplete="name">
+        </div>
+        <div class="campo">
+          <label for="input-emprendimiento">Ingresá el nombre de tu emprendimiento:</label>
+          <input type="text" id="input-emprendimiento" autocomplete="organization">
+        </div>
+        <div class="campo">
+          <label for="input-celular">Ingresá un celular de contacto:</label>
+          <input type="tel" id="input-celular" autocomplete="tel">
+        </div>
+        <p id="error-paso-1" class="mensaje-error" hidden>Por favor completá todos los campos para continuar.</p>
+        <div class="acciones">
+          <button type="button" id="btn-paso1-siguiente" class="btn-principal">Siguiente</button>
+        </div>
+      </div>
+
+      <!-- Paso 2 -->
+      <div id="paso-2" class="paso">
+        <p class="consigna">Elegí qué días de la caja de Adviento te gustaría reservar para tu negocio para la Caja de 25 días.</p>
+        <div class="acciones-arriba">
+          <button type="button" id="btn-solo-14" class="btn-secundario">Quiero participar sólo en la caja de 14 días. -&gt;</button>
+        </div>
+        <div id="grid-caja-25" class="botonera-dias"></div>
+        <div class="acciones">
+          <button type="button" id="btn-paso2-volver" class="btn-volver">Volver</button>
+          <button type="button" id="btn-paso2-siguiente" class="btn-principal">Siguiente</button>
+        </div>
+      </div>
+
+      <!-- Paso 3 -->
+      <div id="paso-3" class="paso">
+        <p class="consigna">Elegí qué días de la caja de Adviento te gustaría reservar para tu negocio para la Caja de 14 días.</p>
+        <div class="acciones-arriba">
+          <button type="button" id="btn-solo-25" class="btn-secundario">Quiero participar sólo en la caja de 25 días. -&gt;</button>
+        </div>
+        <div id="grid-caja-14" class="botonera-dias"></div>
+        <p id="error-paso-3" class="mensaje-error" hidden>Por favor seleccioná al menos un día para continuar.</p>
+        <div class="acciones">
+          <button type="button" id="btn-paso3-volver" class="btn-volver">Volver</button>
+          <button type="button" id="btn-paso3-siguiente" class="btn-principal">siguiente</button>
+        </div>
+      </div>
+
+      <!-- Paso 4 -->
+      <div id="paso-4" class="paso">
+        <p id="texto-resumen" class="consigna resumen"></p>
+        <div class="campo">
+          <label for="input-valor">A continuación ingresá un valor APROXIMADO del total de productos que vas a ofrecer EN TOTAL.<br>El mismo NO SERÁ PUBLICADO.</label>
+          <input type="text" id="input-valor">
+        </div>
+        <p id="error-paso-4" class="mensaje-error" hidden>Por favor ingresá un valor aproximado para continuar.</p>
+        <div class="acciones">
+          <button type="button" id="btn-paso4-volver" class="btn-volver">Volver</button>
+          <button type="button" id="btn-confirmar" class="btn-principal btn-whatsapp">Confirmar y enviar.</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="dias.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
