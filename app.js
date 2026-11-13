@@ -68,6 +68,13 @@
     });
   }
 
+  inputCelular.addEventListener("input", function () {
+    const soloNumeros = inputCelular.value.replace(/\D+/g, "");
+    if (inputCelular.value !== soloNumeros) {
+      inputCelular.value = soloNumeros;
+    }
+  });
+
   const inputsPaso1 = [inputNombre, inputEmprendimiento, inputCelular];
   inputsPaso1.forEach(function (inputEl) {
     vincularLimpiezaError(inputEl, errorPaso1, inputsPaso1);
@@ -126,14 +133,14 @@
 
     if (cant25 > 0 && cant14 > 0) {
       textoResumen.textContent =
-        "Elegíste " + cant25 + " días de la Caja de 25 días y " + cant14 + " de la Caja de 14 días";
+        "Elegiste " + cant25 + " días de la Caja de 25 días y\n" + cant14 + " de la Caja de 14 días";
     } else if (cant25 > 0) {
       textoResumen.textContent = "Elegiste " + cant25 + " de la Caja de 25 días";
     } else if (cant14 > 0) {
       textoResumen.textContent = "Elegiste " + cant14 + " de la Caja de 14 días";
     } else {
       textoResumen.textContent =
-        "Elegíste 0 días de la Caja de 25 días y 0 de la Caja de 14 días";
+        "No elegiste ningún día!";
     }
   }
 
@@ -158,8 +165,17 @@
     });
 
     if (primerVacio) {
+      errorPaso1.textContent = "Por favor completá todos los campos para continuar.";
       errorPaso1.hidden = false;
       primerVacio.focus();
+      return;
+    }
+
+    if (!/^\d+$/.test(inputCelular.value.trim())) {
+      inputCelular.classList.add("input-error");
+      errorPaso1.textContent = "Por favor ingresá únicamente números en el celular de contacto.";
+      errorPaso1.hidden = false;
+      inputCelular.focus();
       return;
     }
 
@@ -224,6 +240,7 @@
 
     const nombre = inputNombre.value.trim();
     const emprendimiento = inputEmprendimiento.value.trim();
+    const celular = inputCelular.value.trim();
 
     const lista25 = ordenarDias(seleccionCaja25);
     const lista14 = ordenarDias(seleccionCaja14);
@@ -253,6 +270,8 @@
       detalleReservas +
       " por un total de " +
       valor +
+      ". Mi número es " +
+      celular +
       ". Aguardo Confirmación";
 
     const url = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(mensaje);
